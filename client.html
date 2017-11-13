@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Indoor Navigation Client</title>
+    <script>
+        var ws = new WebSocket("ws://localhost:8765/");
+
+        ws.onmessage = function (event) {
+            console.log(event.data);
+            alert(event.data);
+        };
+
+</script>
+</head>
+<body>
+    <label>Node A:</label>
+    <input type="text" id="node_a" title="Node A" value="1"/> |
+
+    <label>Node B:</label>
+    <input type="text" id="node_b" title="Node B" value="3"/>
+
+    <input type="button" onclick="ws.send(document.getElementById('node_a').value + ':' + document.getElementById('node_b').value)" title="Send" value="Compute path"/>
+
+    <ul id="messages"></ul>
+<!--<script>
+        var ws = new WebSocket("ws://localhost:8765/");
+        var messages = document.getElementById('messages');
+
+        ws.onmessage = function (event) {
+            var messages = document.getElementById('messages'),
+                message = document.createElement('li'),
+                content = document.createTextNode(event.data);
+            message.appendChild(content);
+            messages.appendChild(message);
+        };
+</script>-->
+
+
+</body>
+</html>
