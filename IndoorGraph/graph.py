@@ -1,21 +1,13 @@
 
 # coding: utf-8
 
-# In[9]:
-
-
 import networkx as nx
 import json
 
 
-# In[10]:
-
 
 class Error(Exception):
     pass
-
-
-# In[11]:
 
 
 def compute_shortest_path(G, nodes):
@@ -23,20 +15,19 @@ def compute_shortest_path(G, nodes):
     return path
 
 
-# In[17]:
-
-
 def create_graph(path):
     G = nx.Graph()
     with open(path) as f:
-        graph_dict = json.load(f, parse_int=str)
-        G.add_weighted_edges_from(graph_dict)
-    # G.add_edge(1, 2, weight=10)  # weight describes length in meters
-    # G.add_edge(2, 3, weight=10)  # weight describes length in meters
+        js_graph = json.load(f)
+
+        for node in js_graph['Knoten']:
+            G.add_node(node['Id'], title=node['Titel'], position=(node['X'], node['Y'], node['Z']))
+
+        # print(js_graph['Kanten'])
+        for edge in js_graph['Kanten']:
+            G.add_edge(edge['Knoten'][0], edge['Knoten'][1], weigth=edge['Länge'])
+
     return G
-
-
-# In[18]:
 
 
 def test_this():
