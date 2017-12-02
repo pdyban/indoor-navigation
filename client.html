@@ -11,6 +11,13 @@
             alert(event.data);
         };
 
+        var ws_search = new WebSocket("ws://localhost:7777/");
+
+        ws_search.onmessage = function (event) {
+            console.log(event.data);
+            alert(event.data);
+        };
+
 </script>
 </head>
 <body>
@@ -36,6 +43,10 @@
         };
 </script>-->
 
+
+    <input type="text" id="room_name" title="Room name" value="Dr. Mueller"/> |
+
+    <input type="button" onclick="ws_search.send(document.getElementById('room_name').value)" title="Send" value="Find room"/>
 
 </body>
 </html>
