@@ -21,7 +21,7 @@ Our project consists of a back-end and a front-end components.
 The back-end is implemented as a series of independent Python services. The services bind to a web socket and listen to incoming requests. In this fashion, the services are easily scalable and replaceble.
 
 To run the example setup, start the following services:
-- the search service 
+- the search service  ([`server.py`](https://github.com/pdyban/indoor-navigation/blob/master/roomsearchservice/server.py))
 
   enables to search for a room in the digital map of the hospital, by its name
   
@@ -29,7 +29,7 @@ To run the example setup, start the following services:
   
   This service will run at `localhost` and listen to port `7777` by default.
   
-- the routing service 
+- the routing service ([`server.py`](https://github.com/pdyban/indoor-navigation/blob/master/routingservice/server.py))
 
   enables to find the shortest path (not necessarily in the sense of distance, 
   but the one which maximize's the patient's utility) through the hospital map
@@ -46,9 +46,9 @@ After you started the back-end services (see above), you may connect any applica
 
 This project implements an example front-end implementation:
 
-  `client.py` contains an example implementeation of a routing service client in Python. 
+  [`client.py`](https://github.com/pdyban/indoor-navigation/blob/master/routingservice/client.py) contains an example implementeation of a routing service client in Python. 
   
-  `client.html` contains an example implementation of a front-end interface to the room search and routing services, in the browser.
+  [`client.html`](https://github.com/pdyban/indoor-navigation/blob/master/client.html) contains an example implementation of a front-end interface to the room search and routing services, in the browser.
 
 ### 3. Tests
 
