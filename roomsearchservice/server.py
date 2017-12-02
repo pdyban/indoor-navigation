@@ -4,12 +4,13 @@ import websockets
 
 
 async def processor(websocket, _path):
-    descriptor = await websocket.recv()
-    print("< User searches room named {}".format(descriptor))
-    rooms = search(descriptor, 'rooms.db')
-    reply = ';'.join(rooms)
-    await websocket.send(reply)
-    print("> {}".format(reply))
+    while True:
+        descriptor = await websocket.recv()
+        print("< User searches room named {}".format(descriptor))
+        rooms = search(descriptor, 'rooms.db')
+        reply = ';'.join(rooms)
+        await websocket.send(reply)
+        print("> {}".format(reply))
 
 
 def run_server():
