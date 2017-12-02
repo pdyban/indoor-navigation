@@ -20,4 +20,4 @@ def search(descriptor, database):
 
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
-    return [row for row in cursor.execute("SELECT room_id IN Rooms WHERE room_name=?", descriptor)]
+    return [row for row in cursor.execute("Select RoomID from Einhornstall where RoomName LIKE ?", ['%' + descriptor + '%'])]

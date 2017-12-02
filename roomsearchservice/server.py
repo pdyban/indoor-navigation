@@ -7,8 +7,8 @@ async def processor(websocket, _path):
     while True:
         descriptor = await websocket.recv()
         print("< User searches room named {}".format(descriptor))
-        rooms = search(descriptor, 'rooms.db')
-        reply = ';'.join(rooms)
+        rooms = search(descriptor, 'roomsearchservice/einhornstall.db')
+        reply = ';'.join(str(room[0]) for room in rooms)
         await websocket.send(reply)
         print("> {}".format(reply))
 

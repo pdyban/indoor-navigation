@@ -12,41 +12,33 @@
         };
 
         var ws_search = new WebSocket("ws://localhost:7777/");
-
-        ws_search.onmessage = function (event) {
-            console.log(event.data);
-            alert(event.data);
-        };
-
 </script>
 </head>
 <body>
+<h1>Room search:</h1>
+<input type="text" id="room_name" title="Room name" value=""/> |
+
+    <input type="button" onclick="ws_search.send(document.getElementById('room_name').value)" title="Send" value="Find room"/>
+
+<h1>Navigate:</h1>
     <label>Node A:</label>
     <input type="text" id="node_a" title="Node A" value="1"/> |
 
     <label>Node B:</label>
-    <input type="text" id="node_b" title="Node B" value="3"/>
+    <input type="text" id="node_b" title="Node B" value=""/>
 
     <input type="button" onclick="ws.send(document.getElementById('node_a').value + ':' + document.getElementById('node_b').value)" title="Send" value="Compute path"/>
 
     <ul id="messages"></ul>
-<!--<script>
-        var ws = new WebSocket("ws://localhost:8765/");
-        var messages = document.getElementById('messages');
 
-        ws.onmessage = function (event) {
-            var messages = document.getElementById('messages'),
-                message = document.createElement('li'),
-                content = document.createTextNode(event.data);
-            message.appendChild(content);
-            messages.appendChild(message);
+<script>
+        ws_search.onmessage = function (event) {
+            console.log(event.data);
+            document.getElementById('node_b').value=event.data;
         };
-</script>-->
+</script>
 
 
-    <input type="text" id="room_name" title="Room name" value="Dr. Mueller"/> |
-
-    <input type="button" onclick="ws_search.send(document.getElementById('room_name').value)" title="Send" value="Find room"/>
 
 </body>
 </html>

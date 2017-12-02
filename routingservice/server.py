@@ -15,7 +15,7 @@ async def processor(websocket, _path):
         nodes = await websocket.recv()
         print("< {}".format(nodes))
         node_source, node_target = nodes.split(':')
-        graph = ig.create_graph('test_graph.json')
+        graph = ig.create_graph('routingservice/einhornstall.json')
         print(graph)
         path = ig.compute_shortest_path(graph, (node_source, node_target))
         print(path, graph)
