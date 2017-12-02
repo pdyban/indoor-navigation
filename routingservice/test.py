@@ -1,7 +1,7 @@
-import server
-import client
-import threading  # the server must run in a separate thread in order not to block execution
 import asyncio
+import threading  # the server must run in a separate thread in order not to block execution
+
+from routingservice import server, client
 
 
 class ServerThread(threading.Thread):

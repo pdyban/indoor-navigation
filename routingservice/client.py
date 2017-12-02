@@ -1,20 +1,8 @@
-
 # coding: utf-8
-
-# In[1]:
-
 
 import asyncio
 import websockets
-
-
-# In[2]:
-
-
 import IndoorGraph as ig
-
-
-# In[5]:
 
 
 async def client():
